@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crystal Hub</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      background-image: url('https://images.pexels.com/photos/998521/pexels-photo-998521.jpeg?auto=compress&cs=tinysrgb&w=400');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px 20px;
+      color: white;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .navbar .nav-links a:hover {
+      color: #ffcc00;
+    }
+
+    /* Slider */
+    .slider {
+      position: relative;
+      max-width: 1000px;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .slider-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+    }
+
+    .slide-details {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+/* 
+    /* Product Cards */
+    .product-cards {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-cards h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-card h3 {
+      font-size: 20px;
+      margin: 15px 0;
+    }
+
+    .product-card .price {
+      font-size: 18px;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .product-card .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 15px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .product-card .btn:hover {
+      background-color: #ffcc00;
+      color: #333;
+    } */
+/* Product card container */
+.product-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Product image */
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Product title */
+.product-card h3 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Product price */
+.product-card .price {
+  font-size: 1.1em;
+  color: #e74c3c;
+  margin-bottom: 10px;
+}
+
+/* Add to Cart button */
+.product-card .btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 50%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-card .btn:hover {
+  background-color: #2980b9;
+}
+
+/* Download link */
+.product-card a {
+  display: block;
+  margin-top: 10px;
+  color: #3498db;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+}
+
+.product-card a:hover {
+  color: #2980b9;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .product-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: 90%;
+  }
+}
+    /* Footer */
+    .footer {
+      background-color: #222;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      margin: 10px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin: 5px 0;
+    }
+
+    .footer-section ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-section ul li a:hover {
+      color: #ffcc00;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .slide-details {
+      animation: fadeIn 1s ease-in-out;
+    }
+    .social-icons {
+            margin: 10px 0;
+        }
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #1da1f2;
+        }
+        /* General Styles */
+.hotspots-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hotspots {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Image Styling */
+.hotspots__image {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hotspots__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Hotspot Buttons */
+.hotspots__buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 15px;
+}
+
+.hotspot__button {
+    background-color: #ffffff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hotspot__button:hover {
+    transform: scale(1.2);
+    background-color: #f3f3f3;
+}
+
+.hotspot__button svg {
+    width: 12px;
+    height: 12px;
+    fill: #333;
+}
+
+/* Hotspot Content */
+.hotspots__content {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.hotspots__content h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.hotspots__content p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Shop Button */
+.hotspots__content .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #6c5ce7;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.hotspots__content .btn:hover {
+    background: #5a4ec7;
+}
+.text-with-icons__blocks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.text-with-icons__block {
+  flex: 1 1 calc(33.333% - 20px); /* Three per row */
+  max-width: calc(33.333% - 20px);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-with-icons__block-icon {
+  margin-bottom: 10px;
+}
+
+.text-with-icons__block-icon svg {
+  width: 50px;
+  height: 50px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.text-with-icons__block-title h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.text-with-icons__block-text p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .text-with-icons__block {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .text-with-icons__block {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+  </style>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Crystal Hub</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#crystals">Crystals</a></li>
+      <li><a href="newarrival.html">New Arrivals</a></li>
+      <!-- <li><a href="#new-products">New Products</a></li> -->
+      <li><a href="sign.html">sign-in</a></li>
+      <!-- <li><a href="#blog">Blog</a></li> -->
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Slider Section -->
+  <section class="slider" id="crystals">
+    <div class="slider-container">
+      <div class="slide">
+        <img src="https://media.gettyimages.com/id/157512081/photo/white-quartz-crystals-on-a-black-background.jpg?s=612x612&w=0&k=20&c=AQM5FizjQ4g_yxpcksTD_yL6it6FJbb2M7fMlVA0Mhs=" alt="Crystal 1">
+        <div class="slide-details">
+          <h3>White quartz crystals</h3>
+          <p>Known for its calming energy and spiritual growth.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://media.gettyimages.com/id/90640110/photo/a-purple-amethyst-crystal-close-up.jpg?s=612x612&w=0&k=20&c=p4lb4s3XE-ACpKa1ZR5WObI1ZYN30NjBiEi_w7MkntA=" alt="Crystal 2">
+        <div class="slide-details">
+          <h3>A purple amethyst crystal close-up</h3>
+          <p>The stone of unconditional love and compassion.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://media.gettyimages.com/id/872545504/photo/starg_red.jpg?s=612x612&w=0&k=20&c=oQrrExnaAheaQy3HlVptBuAoSIuhtntAgbyGx7ViFPE=" alt="Crystal 3">
+        <div class="slide-details">
+          <h3>StarG_red</h3>
+          <p>A master healer and energy amplifier.</p>
+        </div>
+      </div>
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  </section>
+
+  <!-- Product Cards Section -->
+  <section class="product-cards">
+    <h2>Our Products</h2>
+    <div class="card-grid">
+    
+     <!-- Product 1 -->
+<div class="product-card" data-id="1">
+  <img src="https://media.gettyimages.com/id/1489355351/photo/crystal-healing-quartz-crystal.jpg?s=612x612&w=0&k=20&c=0DwtKhxcDYz-tSJw_SzOMEticSGGaWYC2lVALlswnoM=" alt="Product 1">
+  <h3>Crystal healing quartz crystal</h3>
+  <p class="price">$9.99</p>
+  <!-- <button class="btn">Add to Cart</button> -->
+  <!-- <button class="btn">add to card</button> -->
+  <a href="Crystal healing quartz (1).docx"><button class="btn">download detail</button></a>
+</div>
+
+      
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="https://images.pexels.com/photos/168927/pexels-photo-168927.jpeg" alt="Product 2">
+        <h3>Diamond Ring</h3>
+        <p class="price">$49.99</p>
+        <!-- <button class="btn">Add to Cart</button> -->
+        <a href="Diamond Ring.docx"><button class="btn">download detail</button></a>
+      </div>
+      
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="https://media.gettyimages.com/id/1333482517/photo/transparent-quartz-crystals-with-rainbow-light-background.jpg?s=612x612&w=0&k=20&c=gLnkmv1EA8OeLYLrEYUU4r5stuztJ3CargcYEqzPPEs=" alt="Product 3">
+        <h3>Transparent quartz crystals </h3>
+        <p class="price">$19.99</p>
+        <!-- <button class="btn">Add to Cart</button> -->
+        <a href="Transparent quartz crystals.docx"><button class="btn">download detail</button></a>
+      </div>
+      
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img src="https://media.istockphoto.com/id/525888862/photo/druse-of-emerald-green-crystals-of-dioptase.jpg?s=612x612&w=0&k=20&c=-lVUvm0y8pYjNnwb3IdI1UXJqoWF0BqLFzolhSi3mps=" alt="Product 4">
+        <h3>druse of emerald-green crystals of dioptase</h3>
+        <p class="price">$39.99</p>
+        <!-- <button class="btn">Add to Cart</button> -->
+        <a href="druse of emerald-green crystals of dioptase.docx"><button class="btn">download detail</button></a>
+      </div>
+      
+      <!-- Product 5 -->
+      <div class="product-card">
+        <img src="https://images.pexels.com/photos/6757415/pexels-photo-6757415.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Product 5">
+        <h3>assorted colored spiritual crystals</h3>
+        <p class="price">$59.99</p>
+        <!-- <button class="btn">Add to Cart</button> -->
+        <a href="assorted colored spiritual crystals.docx"><button class="btn">download detail</button></a>
+      </div>
+      
+      <!-- Product 6 -->
+      <div class="product-card">
+        <img src="https://images.pexels.com/photos/6944351/pexels-photo-6944351.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Product 6">
+        <h3>Crystal Rock - Quartz</h3>
+        <p class="price">$39.99</p>
+        <!-- <button class="btn">Add to Cart</button> -->
+        <a href="Crystal Rock.docx"><button class="btn">download detail</button></a>
+      </div>
+      
+      <!-- Product 7 -->
+      <div class="product-card">
+        <img src="https://images.pexels.com/photos/6945064/pexels-photo-6945064.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Product 7">
+        <h3>Watercolor pastel colored crystal</h3>
+        <p class="price">$79.99</p>
+        <!-- <button class="btn">Add to Cart</button> -->
+        <a href="Watercolor pastel colored crystal.docx"><button class="btn">download detail</button></a>
+      </div>
+      
+      <!-- Product 8 -->
+      <div class="product-card">
+        <img src="https://media.istockphoto.com/id/503920686/photo/purple-crystal-on-a-white-background-isolated.jpg?s=612x612&w=0&k=20&c=Xd7KMdB6SIgQUIRzLq5XARDi-EF9uati6g7QvL8h2N8=" alt="Product 8">
+        <h3>Purple crystal </h3>
+        <p class="price">$99.99</p>
+        <!-- <button class="btn">Add to Cart</button> -->
+        <a href="Purple crystal.docx"><button class="btn">download detail</button></a>
+      </div>
+      
+      <!-- Product 9 -->
+      <div class="product-card">
+        <img src="https://media.istockphoto.com/id/119387130/photo/double-quartz-crystal.jpg?s=612x612&w=0&k=20&c=f2zh_MuuHXyRgCFhmAMIgKO-5rIIKbke74O22dEutAA=" alt="Product 9">
+        <h3>Double quartz crystal</h3>
+        <p class="price">$89.99</p>
+        <!-- <button class="btn">Add to Cart</button> -->
+        <a href="Crystal healing quartz (1).docx"><button class="btn">download detail</button></a>
+      </div>
+    </div>
+
+    <div class="index-section template--14722055602281__d567b36f-0c4b-48f3-ab1b-0000ebcaae1b 0">
+  
+        <div class="page-width">
+          <h2 class="hotspots__title h2 text-left">The Lifestyle Edit</h2>
+        </div>
+      
+      <hot-spots class="hotspots-wrapper page-width ">
+    
+        <div class="hotspots">
+          <div class="hotspots_image hotspots_image--indent-false">
+            <div class="grid_image-ratio grid_image-ratio--square">
+              
+                
+    
+    
+      <img src="//rockparadise.com/cdn/shop/files/pexels-arina-krasnikova-6998590.jpg?v=1672065490&amp;width=2400" srcset="//rockparadise.com/cdn/shop/files/pexels-arina-krasnikova-6998590.jpg?v=1672065490&amp;width=352 352w, //rockparadise.com/cdn/shop/files/pexels-arina-krasnikova-6998590.jpg?v=1672065490&amp;width=832 832w, //rockparadise.com/cdn/shop/files/pexels-arina-krasnikova-6998590.jpg?v=1672065490&amp;width=1200 1200w, //rockparadise.com/cdn/shop/files/pexels-arina-krasnikova-6998590.jpg?v=1672065490&amp;width=1920 1920w, //rockparadise.com/cdn/shop/files/pexels-arina-krasnikova-6998590.jpg?v=1672065490&amp;width=2400 2400w" width="500" height="500" loading="eager" sizes="100%" data-uw-rm-alt-original="" alt="The Cerebral Stone" data-uw-rm-alt="CT">
+    
+    
+              
+            </div>
+          </div>
+    
+          <div class="hotspots__buttons">
+            
+              <a href="#" class="hotspot_button hotspot_button--4a3cf8a3-c14f-4456-92d1-aee10e496505" data-button="4a3cf8a3-c14f-4456-92d1-aee10e496505" aria-label="Open this option" data-uw-rm-empty-ctrl="">
+                
+                
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-dot" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="currentColor"></circle></svg>
+                
+              </a>
+            
+              <a href="#" class="hotspot_button hotspot_button--03c0a828-5521-4c29-a2a8-d3b034b31498" data-button="03c0a828-5521-4c29-a2a8-d3b034b31498" aria-label="Open this option" data-uw-rm-empty-ctrl="">
+                
+                
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-dot" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="currentColor"></circle></svg>
+                
+              </a>
+            
+          </div>
+        </div>
+        <div class="hotspots__content" data-block-container="">
+          
+            <div class="hotspot-content__block is-active" data-block-type="paragraph" data-hotspot-block="4a3cf8a3-c14f-4456-92d1-aee10e496505">
+              
+                  
+                    <p class="subheading">The Cerebral Stone</p>
+                  
+                  
+                    <h3>Amethyst</h3>
+                  
+    
+                  
+                    <p>Amethyst boasts rich purple hues and cerebral properties which promote balance, tranquility, and spiritual insight. It is believed to defend against negative energies, transforming them into love and enhancing intuition. This gem is a symbol of inner strength and cherished in various cultures for jewelry and decorative home decor pieces.</p>
+                  
+    
+                  
+                    <a href="" class="btn">Shop</a>
+                  
+              
+            </div>
+          
+          
+          
+        </div>
+      </hot-spots>
+    </div>
+    <div class="
+        text-with-icons__blocks
+        has-3-per-row" data-block-count="2">
+      
+        <div class="text-with-icons__block text-center">
+          <div class="text-with-icons__block-icon">
+            
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-plant" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M15.33 86.58h69.34s-30.67-40.37-69.34 0zM43.15 46.69s9 8.83 9.27 22M82.06 13.43s-27.38-1.32-25.37 25.16c0 0 23 5.54 25.37-25.16zM82.06 13.43L56.69 38.59M63.19 32.17l13.16-.45M70.05 25.35l9.7-.34M63.19 32.17l.45-13.07M70.05 25.35l.34-9.91M50.64 59.11a32.68 32.68 0 0 1 6-20.52M18 21.31S16.67 48.7 43.15 46.69c0 0 5.54-23-25.15-25.38zM17.99 21.31l25.16 25.38M36.73 40.19l-.45-13.16M29.91 33.33l-.34-9.7M36.73 40.19l-13.08-.45M29.91 33.33L20 32.99"></path></svg>
+              
+          </div>
+          <div class="text-with-icons__block-title">
+            <h3>Ethical sourcing</h3>
+          </div>
+          <div class="text-with-icons__block-text">
+            <p>We're on a first name basis with our suppliers and every year we travel the world to ensure that your stones are coming from people who care about their teams and environment. </p>
+          </div>
+        </div>
+      
+        <div class="text-with-icons__block text-center">
+          <div class="text-with-icons__block-icon">
+            
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-tcwi-package" viewBox="0 0 100 100"><defs><style>.a{fill:none;stroke:#000;stroke-width:2.16px}</style></defs><path class="a" d="M50 89.87L15.33 69.86V30.08l34.78-19.95 34.56 19.95v39.78L50 89.87z"></path><path class="a" d="M67.33 50.78V40.09L32.76 20.14M15.33 30.08L50 50.09"></path><path class="a" d="M50 89.87V50.09l34.67-20.01"></path></svg>
+              
+          </div>
+          <div class="text-with-icons__block-title">
+            <h3>Huge selection</h3>
+          </div>
+          <div class="text-with-icons__block-text">
+            <p>We have one of the largest  collections in the USA. Our 30,000 square foot warehouse is home to mindboggling amount of crystals. </p>
+          </div>
+        </div>
+      
+    </div> 
+  
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: info@crystalhub.com</p>
+        <p>Phone: +123 456 7890</p>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2023 Crystal Hub | Designed by Your Name
+    </div>
+  </footer>
+
+  <script>
+    let slideIndex = 0;
+
+
+function moveSlide(n) {
+  const slides = document.querySelectorAll('.slide');
+  slideIndex += n;
+
+  if (slideIndex >= slides.length) {
+    slideIndex = 0;
+  } else if (slideIndex < 0) {
+    slideIndex = slides.length - 1;
+  }
+
+  const offset = -slideIndex * 100;
+  document.querySelector('.slider-container').style.transform = `translateX(${offset}%)`; // Corrected line
+  
+}
+
+    
+  </script>
+</body>
+</html>

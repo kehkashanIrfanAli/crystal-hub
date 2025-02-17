@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Crystal Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling for the About Us Section */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        /* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
+  padding: 10px 20px;
+}
+
+.navbar-logo a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+
+        /* About Us Section Styling */
+        .about-us {
+            background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Image for the Section */
+        .about-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/3737449/pexels-photo-3737449.jpeg?auto=compress&cs=tinysrgb&w=400'); /* Replace with your crystal image */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2; /* Slight transparency for background image */
+            z-index: -1; /* Ensure content is on top of background */
+            border-radius: 10px;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .about-content h2 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 40px;
+            color: #6a3d4f; /* Deep Purple for Crystal Brand Vibe */
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            padding: 0 15px;
+            text-align: justify;
+            color: #555;
+        }
+
+        .brand-name {
+            font-weight: 600;
+            color: #d98f7e; /* Soft Rose Color for Emphasis */
+            text-transform: uppercase;
+        }
+
+        /* Button/Link styling for action */
+        .about-us a {
+            font-weight: 600;
+            font-size: 18px;
+            color: #6a3d4f;
+            text-decoration: none;
+            border: 2px solid #6a3d4f;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .about-us a:hover {
+            background-color: #6a3d4f;
+            color: white;
+        }
+
+        /* Responsive Design for Smaller Screens */
+        @media (max-width: 768px) {
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .about-content p {
+                font-size: 16px;
+            }
+
+            .about-us {
+                padding: 60px 15px;
+            }
+        }
+        /* Footer Styles */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer .social-icons i {
+  margin: 0 15px;
+  font-size: 24px;
+}
+
+.footer .social-icons a {
+  color: white;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+     <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="index.html">Crystal Hub</a>
+    </div>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="new-arrivals.html">New Arrivals</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+    </ul>
+  </nav>
+
+    <!-- About Us Section -->
+    <section class="about-us">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>Welcome to <span class="brand-name">Crystal Hub</span>, your trusted online destination for high-quality, ethically sourced crystals. We are passionate about connecting you with the natural healing power of crystals, offering a wide range of carefully selected gemstones to support your journey toward balance, wellness, and positive energy.</p>
+            <p>Whether you're a crystal enthusiast or just starting your collection, our mission is to provide you with authentic crystals, along with expert guidance on how to incorporate them into your daily life. We believe that every stone carries its own unique energy, and we're here to help you find the perfect crystal to elevate your well-being. Explore our collection and experience the transformative power of nature, one crystal at a time.</p>
+            <a href="#">Explore Our Crystals</a> <!-- Call to Action Button -->
+        </div>
+    </section>
+ <!-- Footer Section -->
+ <footer class="footer">
+    <p>&copy; 2025 Crystal Hub | All Rights Reserved</p>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+</body>
+</html>
+
+
